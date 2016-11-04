@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+
+<head>
+	<title>Dragon Drop for AngularJS</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+	<link rel="stylesheet" href="./bower_components/angular-layout-design/style.css">
+	<!--[if lte IE 8]
+      <script>
+        document.createElement('ng-view');
+        // Other custom elements
+      </script>
+    <![endif]-->
+	<link rel="stylesheet" href="./bower_components/angular-bootstrap-colorpicker/css/colorpicker.css">
+</head>
+
+<body ng-app="myApp">
+	<div class="jumbotron text-center">
+		<h1>Angular JS Drag and Drop Design Page</h1>
+	</div>
+
+	<div class="container" ng-controller="MainCtrl">
+		<div class="row">
+			<button class="btn btn-primary" ng-click="saveDiagram()">Save</button>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<h3>
+					Mode:
+					<input type="radio" ng-model='smode' value="design" autocomplete="off" ng-click="modeChange('design')" ng-checked="{{mode==='design'}}">					Design
+
+					<input type="radio" ng-model='smode' value="selection" autocomplete="off" ng-click="modeChange('selection')" ng-checked="{{mode==='selection'}}">					Selection
+				</h3>
+			</div>
+		</div>
+		<design-dragdrop diagram="zoneinfo" mode="{{mode}}" table-selected="tableSelected(table)"></design-dragdrop>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script src="./bower_components/angular-layout-design/dragon-drop.js"></script>
+	<script src="./bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.2.0/fabric.all.min.js"></script>
+	<script>
+    angular.module('myApp', ['design.drag-drop']).
+      controller('MainCtrl', function ($scope, $http) {
+        $scope.mode = "design";
+        
+        $scope.modeChange = function($param){
+          $scope.mode = $param;
+        }
+        
+        $scope.tableSelected = function(tableInfo){
+          console.info('table selected: ', tableInfo);
+        }    
+
+        $scope.mycolor = "";
+
+        var apiUrl = 'http://localhost:3000/zones'
+
+        $scope.saveDiagram = function(){
+          var maxZoneId = $.grep($scope.zoneinfo.zones, function(zone){
+                return zone.id > 0;
+              }).length;
+
+          angular.forEach($scope.zoneinfo.zones, function(zone){
+            angular.forEach(zone.tables, function(table){
+                table._isSelected = false;
+            });
+
+            if(zone.id == 0) {
+              zone.id = ++maxZoneId;
+
+              $http.post(apiUrl, zone)
+                .then(function(){
+                  console.info("zone: " + zone.id + " added!");
+                }, function(err){
+                  console.error("Error while adding zone!", err);
+                });
+            }
+            else {
+              $http.put(apiUrl + '/' + zone.id, zone)
+                .then(function(){
+                  console.info("zone: " + zone.id + " saved!");
+                }, function(err){
+                  console.error("Error while saving!", err);
+                });
+            }
+          });
+        }
+
+        var getZones = function(){
+          $http.get(apiUrl)
+            .then(function(zoneInfo){
+              $scope.zoneinfo = {
+                'zones': zoneInfo.data
+              }
+            })
+        }
+
+        getZones();
+      });
+  </script>
+</body>
+
+</html>

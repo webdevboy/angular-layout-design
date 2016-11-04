@@ -1,0 +1,205 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+.zone-area{
+	width: 100%;
+	height: 100%;
+	min-height: 200px
+	padding: 0px;
+	margin: 0px;
+	float: left;
+}
+.zone-area .zone{
+	width: 100%;
+	height: 100%;
+	border: 1px #666 solid;
+	float: left;
+	margin-left:10px;
+	display: block;
+	visibility: visible;
+	margin-top:10px;
+}
+
+.zone-area .zone .zone_close{
+	width: 15px;
+	height: 15px;
+	display: block;
+	background: #c03053;
+	color: white;
+	position: absolute;
+	cursor: pointer;
+	right: 0px;
+	top: 0px;
+	font-size: 12px;
+	text-align: center;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */     
+}
+.zone-area .zone .z-tables{
+	width: 100%; height: 100%;
+	position: relative;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;  	
+}
+.zone-area .zone .z-t{
+	position: absolute;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+	color: white;
+	z-index: 1;
+	clear: both;
+	color: #333;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */ 
+}
+.zone-area .zone .z-t.moveDown {
+    z-index: 999 !important;
+}
+.zone-area .zone .z-t.moveUp {
+    z-index: 1 !important;
+}
+
+.zone-area .zone .z-t .btn_close{
+	width: 15px;
+	height: 15px;
+	display: block;
+	color: #468847;
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	font-size: 15px;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */     
+}
+.zone-area .zone .z-t .explain{
+	position: absolute;
+	width: 100%;
+	top: 20px;
+	left: 0px;
+	color: #333;
+	z-index: 0;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */     
+}
+.zone-area .zone .z-footer{
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+	position: relative;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;  
+}
+
+.table-area{
+	width: 100%;
+	height: 100%;
+	float: left;
+	border: 1px #333 solid;
+}
+.zone-add{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background: #c03053;
+	color: white;
+	float: left;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.square {
+	width: 50px;
+	height: 50px;
+	display: block;
+	border: 3px solid #9e4e14;
+	cursor: pointer;
+	margin: 0px auto;
+}
+.rectangle {
+	width: 100px;
+	height: 50px;
+	display: block;
+	border: 3px solid #bf975a;
+	cursor: pointer;
+	margin: 0px auto;
+}
+.circle {
+	width: 50px;
+	height: 50px;
+	border: 3px solid #64a2d8;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	display:block;
+	cursor: pointer;
+	margin: 0px auto;
+}
+.oval {
+	width: 100px;
+	height: 50px;
+	border: 3px solid #9e4e14;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	display: block;
+	cursor: pointer;
+	margin: 0px auto;
+}
+.line-v{
+	width: 5px;
+	height: 50px;
+	background: #9e4e14;
+	display: block;
+	cursor: pointer;
+	margin: 0px auto;
+
+}
+.line-h{
+	width: 50px;
+	height: 5px;
+	background: #9e4e14;
+	display: block;
+	cursor: pointer;
+	margin: 0px auto;
+}
+.pillar {
+	width: 50px;
+	height: 50px;
+	background: #999;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	display:block;
+	cursor: pointer;
+	margin: 0px auto;
+}
+
+.zone-square {
+}
+
+.zone-circle{
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}

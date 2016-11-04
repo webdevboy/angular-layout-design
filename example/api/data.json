@@ -1,0 +1,181 @@
+{
+  "zones": [
+    {
+      "id": 1,
+      "type": "square",
+      "name": "Dining Area",
+      "size": {
+        "width": 600,
+        "height": 600
+      },
+      "tables": [
+        {
+          "id": 2,
+          "type": "circle",
+          "text": "circle table",
+          "seatingCapacity": 6,
+          "readableLocation": "string",
+          "status": "#c09853",
+          "size": {
+            "width": 100,
+            "height": 100
+          },
+          "location": {
+            "x": 399,
+            "y": 207
+          },
+          "additionalInfo": {},
+          "_isSelected": false
+        },
+        {
+          "id": 3,
+          "type": "square",
+          "text": "square table",
+          "seatingCapacity": 4,
+          "readableLocation": "string",
+          "status": "rgba(79,23,23,0.27)",
+          "size": {
+            "width": 264,
+            "height": 237
+          },
+          "location": {
+            "x": 159,
+            "y": 70
+          },
+          "additionalInfo": {},
+          "_isSelected": false
+        },
+        {
+          "id": 5,
+          "type": "line-v",
+          "text": "drag table",
+          "seatingCapacity": 8,
+          "readableLocation": "string",
+          "status": "",
+          "size": {
+            "width": 64,
+            "height": 408
+          },
+          "location": {
+            "x": 58,
+            "y": 78
+          },
+          "additionalInfo": {},
+          "_isSelected": false
+        },
+        {
+          "id": 6,
+          "type": "circle",
+          "text": "drag table",
+          "seatingCapacity": 8,
+          "readableLocation": "string",
+          "status": "",
+          "size": {
+            "width": 214,
+            "height": 142
+          },
+          "location": {
+            "x": 302,
+            "y": 245
+          },
+          "additionalInfo": {},
+          "_isSelected": false
+        },
+        {
+          "id": 5,
+          "type": "oval",
+          "text": "drag table",
+          "seatingCapacity": 8,
+          "readableLocation": "string",
+          "status": "",
+          "size": {
+            "width": 257,
+            "height": 95
+          },
+          "location": {
+            "x": 259,
+            "y": 393
+          },
+          "additionalInfo": {},
+          "_isSelected": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "square",
+      "name": "square Area",
+      "size": {
+        "width": 313,
+        "height": 364
+      },
+      "tables": [
+        {
+          "id": 1,
+          "type": "rectangle",
+          "text": "rectangle table",
+          "seatingCapacity": 8,
+          "readableLocation": "string",
+          "status": "#64a2d8",
+          "size": {
+            "width": 200,
+            "height": 100
+          },
+          "location": {
+            "x": 55,
+            "y": 145
+          },
+          "additionalInfo": {},
+          "_isSelected": false
+        },
+        {
+          "id": 2,
+          "type": "circle",
+          "text": "circle table",
+          "seatingCapacity": 6,
+          "readableLocation": "string",
+          "status": "#c09853",
+          "size": {
+            "width": 100,
+            "height": 100
+          },
+          "location": {
+            "x": 113,
+            "y": 259
+          },
+          "additionalInfo": {},
+          "_isSelected": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "square",
+      "name": "add Area",
+      "size": {
+        "width": 311,
+        "height": 237
+      },
+      "tables": [
+        {
+          "id": 1,
+          "type": "oval",
+          "text": "drag table",
+          "seatingCapacity": 8,
+          "readableLocation": "string",
+          "status": "",
+          "size": {
+            "width": 94,
+            "height": 44
+          },
+          "location": {
+            "x": 46,
+            "y": 40
+          },
+          "additionalInfo": {},
+          "_isSelected": false
+        }
+      ]
+    }
+  ]
+}
