@@ -15,7 +15,7 @@ Examples:
 
 Directive format
 ```html
-<design-dragdrop diagram="zoneinfo" mode="{{mode}}" tableSelected="tableSelected" tableStatusColorMap="" templete-url="./bower_components/angular-layout-design/template.html"></design-dragdrop>
+<design-dragdrop diagram="zoneinfo" mode="{{mode}}" table-selected="tableSelected(table)" templete-url="./bower_components/angular-layout-design/template.html"></design-dragdrop>
 ```
 Include
 ===============================
