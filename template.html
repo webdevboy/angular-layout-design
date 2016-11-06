@@ -15,15 +15,19 @@
   
   <div class="col-sm-10" draggable='false'>
       <div class="zone-area" draggable='false'>
-        <div ng-repeat="(z_k, zones) in diagram.zones" class="zone ui-resizable zone-{{zones.type}}" zone-key="{{z_k}}" draggable="false" ng-style="{'width':zones.size.width, 'height':zones.size.height}" ng-click="zoneSel($event)" ng-mousemove="mmTable($event)" ng-mouseleave="mlTable($event)" ng-mouseup="muTable($event)">
-            <span ng-if="mode=='design'" colorpicker="rgba" ng-repeat="(t_k, tables) in zones.tables" ng-model="tables.status" colorpicker-position="bottom" class="z-t ui-resizable {{tables.type}}" ng-class="{'moveDown': tables._isSelected}" z-key="{{z_k}}" t-key="{{t_k}}" ng-style="{'top': tables.location.y, 'left' : tables.location.x, 'width' : tables.size.width, 'height' : tables.size.height, 'background' : tables.status }" draggable="fasle"  ng-mousedown="mdTable($event)" >
+        <div ng-repeat="(z_k, zones) in diagram.zones" ng-if="mode=='design'" class="zone ui-resizable zone-{{zones.type}}" zone-key="{{z_k}}" draggable="false" ng-style="{'width':zones.size.width, 'height':zones.size.height}" ng-click="zoneSel($event)" ng-mousemove="mmTable($event)" ng-mouseleave="mlTable($event)" ng-mouseup="muTable($event)">
+            <span colorpicker="rgba" ng-repeat="(t_k, tables) in zones.tables" ng-model="tables.status" colorpicker-position="bottom" class="z-t ui-resizable {{tables.type}}" ng-class="{'moveDown': tables._isSelected}" z-key="{{z_k}}" t-key="{{t_k}}" ng-style="{'top': tables.location.y, 'left' : tables.location.x, 'width' : tables.size.width, 'height' : tables.size.height, 'background' : tables.status }" draggable="fasle"  ng-mousedown="mdTable($event)" >
               <b class='btn_close' draggable="false" ng-show="tables._isSelected && mode=='design'" ng-mousedown="mdClose($event)" z-key="{{z_k}}" t-key="{{t_k}}">X</b>{{tables.text}} ({{tables.size.width}}*{{tables.size.height}})
             </span>
-            <span ng-if="mode=='selection'" ng-repeat="(t_k, tables) in zones.tables" class="z-t {{tables.type}}" ng-style="{'top': tables.location.y, 'left' : tables.location.x, 'width' : tables.size.width, 'height' : tables.size.height, 'background' : tables.status }" draggable="fasle" ng-click="tableClicked(tables)" >
+          <p class="z-footer">{{zones.name}}</p>
+          <b class='zone_close' draggable="false" ng-click="mdZoneClose($event)" z-key="{{z_k}}">X</b>
+        </div>
+
+        <div ng-repeat="(z_k, zones) in diagram.zones" ng-if="mode=='selection'" class="zone ui-resizable zone-{{zones.type}}" zone-key="{{z_k}}" draggable="false" ng-style="{'width':zones.size.width, 'height':zones.size.height}" >
+            <span ng-repeat="(t_k, tables) in zones.tables" class="z-t {{tables.type}}" ng-style="{'top': tables.location.y, 'left' : tables.location.x, 'width' : tables.size.width, 'height' : tables.size.height, 'background' : tables.status }" draggable="fasle" ng-click="tableClicked(tables)" >
              <b class='explain' draggable="false">{{tables.text}} ({{tables.size.width}}*{{tables.size.height}})</b>
             </span>
           <p class="z-footer">{{zones.name}}</p>
-          <b class='zone_close' draggable="false" ng-show="mode=='design'" ng-click="mdZoneClose($event)" z-key="{{z_k}}">X</b>
         </div>
       </div>
   </div>

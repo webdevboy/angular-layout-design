@@ -5,9 +5,7 @@ angular.module('design.drag-drop', ['colorpicker.module']).
   directive('designDragdrop', function ($document) {
     return {
       restrict: 'E',
-      templateUrl: function(tElement, tAttrs) {
-        return tAttrs.templateUrl || "./bower_components/angular-layout-design/template.html";
-      },
+      templateUrl: "./bower_components/angular-layout-design/template.html",
       scope: {
         diagram: "=",
         mode: "@",
@@ -56,10 +54,14 @@ angular.module('design.drag-drop', ['colorpicker.module']).
             start: function (event, ui) {
             },
             resize: function (event, ui) {
-              if( max_w > ui.size.width | max_h > ui.size.height )
+              if( max_w > ui.size.width )
               {
-                ui.size.width   += 5;
-                ui.size.height  += 5;
+                ui.size.width   = max_w+5;                
+                angular.element($event.target).resizable().trigger('mouseup');
+              }
+              if( max_h > ui.size.height )
+              {
+                ui.size.height  = max_h+5;
                 angular.element($event.target).resizable().trigger('mouseup');
               }
 
