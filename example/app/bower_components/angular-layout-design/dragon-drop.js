@@ -25,6 +25,7 @@ angular.module('design.drag-drop', ['colorpicker.module']).
           }
         }
 
+
         scope.zoneSel = function($event){
           if (scope.mode == "selection") return;
 
@@ -71,7 +72,36 @@ angular.module('design.drag-drop', ['colorpicker.module']).
             stop: function (event, ui) {
             }
           });
+        }
 
+        scope.zoneSort = function ($event){
+          if( !dragAble )
+          {
+            angular.element(element[0].querySelector('.zone-area')).sortable({
+              cursor: "move",
+              start: function( event, ui ) {
+              },
+              sort: function( event, ui ){
+              },
+              stop: function( event, ui ) {
+                scope.$apply(function () {
+                  scope.syncOrder(angular.element(element[0].querySelector('.zone-area')).sortable( "widget" ));
+                });
+              }
+            });
+            angular.element(element[0].querySelector('.zone-area')).sortable('enable');
+          }
+        }
+
+        scope.syncOrder = function (elemPositions) {
+          
+          var originalDiagram = scope.diagram.zones;
+          scope.diagram.zones = [];
+          angular.forEach(angular.element(elemPositions[0].children), function(obj, index){
+            scope.diagram.zones.push( originalDiagram[angular.element(obj).attr("zone-key")] );
+          });
+
+          console.log( scope.diagram.zones );
         }
 
         scope.mdZoneClose = function ($event) {
@@ -87,7 +117,7 @@ angular.module('design.drag-drop', ['colorpicker.module']).
         scope.mdTable = function ($event) {
           if (scope.mode == "selection") return;
           sTable = angular.element($event.target);
-          if( angular.element($event.target)[0].localName != "span")
+          if( angular.element($event.target)[0].localName != "li")
           {
             sTable = angular.element($event.target).parent();           
           }
@@ -138,6 +168,10 @@ angular.module('design.drag-drop', ['colorpicker.module']).
 
           initialMouseX = $event.clientX;
           initialMouseY = $event.clientY;
+
+          angular.element(element[0].querySelector('.zone-area')).sortable();
+          angular.element(element[0].querySelector('.zone-area')).sortable("disable");
+
           return false;
         }
 
