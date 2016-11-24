@@ -2,6 +2,8 @@
 angular-layout-design
 ===============================
 
+<img width="800" src="screen.jpg" border="0" />
+
 Installation
 ===============================
 
